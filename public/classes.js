@@ -77,9 +77,7 @@ class Usuario {
          this.segundoApellido = pSegundoApellido;
     }
 
-    setId(pCedula) {
-         this.cedula = pCedula;
-    }
+    
 
     setEmail(pEmail) {
          this.email = pEmail;
@@ -108,7 +106,7 @@ class Usuario {
 }
 
 class Hotel{
-    constructor(pFoto,pNombre, pLatitud, pLongitud, pProvincia, pCanton, pDistrito, pDireccion, pTelefono, pTelefonoServicio, pEmail, pEmailServicio){
+    constructor(pFoto,pNombre, pLatitud, pLongitud, pProvincia, pCanton, pDistrito, pDireccionExacta, pTelefono, pTelefonoServicio, pEmail, pEmailServicio){
         this._id = 0;
         this.foto = pFoto;
         this.nombre = pNombre;
@@ -117,7 +115,7 @@ class Hotel{
         this.provincia = pProvincia;
         this.canton = pCanton;
         this.distrito = pDistrito;
-        this.direccion = pDireccion;
+        this.direccionExacta = pDireccionExacta;
         this.telefono = pTelefono;
         this.telefonoServicio = pTelefonoServicio;
         this.email = pEmail;
@@ -127,9 +125,11 @@ class Hotel{
     getNombreHotel(){
         return this.nombre;
     }
-
+     setIdHotel(pId){
+    this._id = pId;
+  }
     getLocalizacionHotel(){
-        return '${this.latitud}, ${this.longitud}';
+        return `${this.latitude}, ${this.longitude}`;
     }
 
     getProvincia(){
@@ -145,7 +145,7 @@ class Hotel{
     }
 
     getDireccion(){
-        return this.direccion;
+        return `${this.provincia}, ${this.canton}, ${this.distrito}`;
     }
 
     getTelefono(){

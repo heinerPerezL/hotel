@@ -23,8 +23,8 @@ function loginService(servicioUsuarios, dataStorageFactory) {
         for (let i = 0; i < listaUsuarios.length; i++) {
              if (listaUsuarios[i].email == pCredenciales.email && listaUsuarios[i].password == pCredenciales.password) {
                  let credencialesCorrectas = {
-                     id: listaUsuarios.cedula,
-                     rol: listaUsuarios.tipo
+                     id: listaUsuarios[i].cedula,
+                     rol: listaUsuarios[i].tipo
                  }
 
 
