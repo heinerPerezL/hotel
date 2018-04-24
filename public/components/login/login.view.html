@@ -1,0 +1,17 @@
+
+<div class="container">
+    <form class="form" ng-submit="vm.login(vm.credenciales)">
+        <div class="form-group">
+            <input type="text" placeholder="Correo electrónico" class="form-control" ng-model="vm.credenciales.email">
+        </div>
+        <div class="form-group">
+            <input type="password" placeholder="Contraseña" class="form-control" ng-model="vm.credenciales.password">
+        </div>
+        <div class="form-group"></div>
+        <button type="submit" class="btn btn-default">Iniciar sesión</button>
+        <p class="message">¿No tiene cuenta?
+            <a ui-sref="registerUser">Crear cuenta</a>
+        </p>
+</div>
+</form>
+</div>

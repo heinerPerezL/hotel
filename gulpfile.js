@@ -27,7 +27,9 @@ gulp.task('connect', () => {
   browserSync.init({
     server: './public'
   });
+  nodemon();
 });
+
 
 gulp.task('to-do', (cb) => {
   gulp.src([paths.js, paths.jsBackEnd, paths.principalJs])

@@ -18,6 +18,92 @@
              }
          })
 
+         .state('logIn', {
+        url: '/logIn',
+        templateUrl: './components/login/login.view.html',
+        data:{
+          pageTitle: 'Iniciar sesión'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/login/login.controller.js')
+          }]
+        },
+        controller: 'controladorLogin',
+        controllerAs: 'vm'
+      })
+
+         .state('main', {
+        url: '/main',
+        templateUrl: './components/main/main.view.html',
+        data:{
+          pageTitle: 'Iniciar sesión'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/main.controller.js')
+          }]
+        },
+        controller: 'controladorMain',
+        controllerAs: 'vm'
+      })
+
+      .state('registrarUsario', {
+        url: '/registrarUsuario',
+        templateUrl: './components/usuarios/registroUsuario/RegistroUsuarios.view.html',
+        data:{
+          pageTitle: 'Registro cliente'
+        },
+        params: {
+          objClienteTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/registroUsuario/RegistroUsuario.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarUsuario',
+        controllerAs: 'vm'
+      })
+
+       .state('listarUsuario', {
+        url: '/listarUsuario',
+        templateUrl: './components/usuarios/listarUsuarios/listarUsuarios.view.html',
+        data:{
+          pageTitle: 'Lista clientes'
+        },
+        params: {
+          objClienteTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/listarUsuarios/listarUsuario.controller.js')
+          }]
+        },
+        controller: 'controladorListarUsuario',
+        controllerAs: 'vm'
+      })
+
+       .state('editarUsuarios', {
+        url: '/editarUsuarios',
+        templateUrl: './components/usuarios/editarUsuario/editarUsuario.view.html',
+        data:{
+          pageTitle: 'editar cliente'
+        },
+        params: {
+          objClienteTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/editarUsuario/editarUsuario.controller.js')
+          }]
+        },
+        controller: 'controladorEditarUsuario',
+        controllerAs: 'vm'
+      })
+
+
+
          $urlRouterProvider.otherwise('/');
 
 
