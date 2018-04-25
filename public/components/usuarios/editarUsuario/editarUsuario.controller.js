@@ -51,7 +51,35 @@
           servicioUsuarios.actualizarUsuario (objEditar);
         }
       });
-      $state.go ('listarUsuarios');
+      $state.go ('listarUsuario');
     };
+
+     vm.Eliminar = (pEstado)=>{
+          let listaUsuarios = servicioUsuarios.getUsuarios();
+          let usuario = {};
+          listaUsuarios.forEach(objUsuario => {
+            if (objUsuario._id === objUsuarioAEditar._id) {
+              
+              objUsuario.actualizarEstadoUsuario(pEstado);
+              usuario = objUsuario;
+            }
+           servicioUsuarios.actualizarUsuario (usuario);
+          });
+          $state.go ('listarUsuario');
+        };
+
+         vm.Activar = (pEstado)=>{
+          let listaUsuarios = servicioUsuarios.getUsuarios();
+          let usuario = {};
+          listaUsuarios.forEach(objUsuario => {
+            if (objUsuario._id === objUsuarioAEditar._id) {
+              
+              objUsuario.actualizarEstadoUsuario(pEstado);
+              usuario = objUsuario;
+            }
+           servicioUsuarios.actualizarUsuario (usuario);
+          });
+          $state.go ('listarUsuario');
+        };
   }
 }) ();

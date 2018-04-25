@@ -16,33 +16,33 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th> Cedula</th>
-                    <th> PrimerNombre</th>
-                    <th> SegundoNombre</th>
-                    <th> PrimerApellido</th>
-                    <th> SegundoApellido</th>
-                    <th> FechaNacimiento</th>
-                    <th> Email</th>
-                    <th> Telefono</th>
+                    <th><a class="puntero" ng-click="columna = 'Cedula'; reverse = !reverse">Cédula</a> </th>
+                    <th><a class="puntero" ng-click="columna = 'PrimerNombre'; reverse = !reverse">Primer Nombre</a> </th>
+                    <th><a class="puntero" ng-click="columna = 'SegundoNombre'; reverse = !reverse">Segundo Nombre</a></th>
+                    <th><a class="puntero" ng-click="columna = 'PrimerApellido'; reverse = !reverse">Primer Apellido</a> </th>
+                    <th><a class="puntero" ng-click="columna = 'SegundoApellido'; reverse = !reverse">Segundo Apellido</a> </th>
+                    <th><a class="puntero" ng-click="columna = 'FechaNacimiento'; reverse = !reverse"></a> Fecha Nacimiento</th>
+                    <th><a class="puntero" ng-click="columna = 'Email'; reverse = !reverse">Email</a> </th>
+                    <th><a class="puntero" ng-click="columna = 'Telefono'; reverse = !reverse">Telefono</a> </th>
                 </tr>
-                </th>
+                
             </thead>
-                <tbody>
-                    <tr ng-repeat="usuario in vm.listaUsuarios | filter:buscarUsuario | orderBy:columna: reverse"  >
-                        <td>{{usuario.cedula}}</td>
-                        <td>{{usuario.primerNombre}}</td>
-                        <td>{{usuario.segundoNombre}}</td>
-                        <td>{{usuario.primerApellido}}</td>
-                        <td>{{usuario.segundoApellido}}</td>
-                        <td>{{usuario.fechaNacimiento}}</td>
-                        <td>{{usuario.email}}</td>
-                        <td>{{usuario.telefono}}</td>
-                        
-                        <td>
-                            <button type="button" ng-click="vm.editarUsuario(usuario)">Editar</button>
-                        </td>
-                    </tr>
-                </tbody>
+            <tbody>
+                <tr ng-repeat="usuario in vm.listaUsuarios | filter:buscarUsuario | orderBy:columna: reverse" ng-if="usuario.estado === 'activo'">
+                    <td>{{usuario.cedula}}</td>
+                    <td>{{usuario.primerNombre}}</td>
+                    <td>{{usuario.segundoNombre}}</td>
+                    <td>{{usuario.primerApellido}}</td>
+                    <td>{{usuario.segundoApellido}}</td>
+                    <td>{{usuario.fechaNacimiento}}</td>
+                    <td>{{usuario.email}}</td>
+                    <td>{{usuario.telefono}}</td>
+
+                    <td>
+                        <button type="button" ng-click="vm.editarUsuario(usuario)">Editar</button>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
 </section>

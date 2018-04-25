@@ -2,11 +2,11 @@
   'use strict'
   angular
     .module('hoteles')
-    .controller('controladorListarUsuario', controladorListarUsuario);
+    .controller('controladorUsuariosDesactivados', controladorUsuariosDesactivados);
     
-    controladorListarUsuario.$inject = ['$http','$stateParams', '$state', '$location', 'servicioUsuarios']
+    controladorUsuariosDesactivados.$inject = ['$http','$stateParams', '$state', '$location', 'servicioUsuarios']
 
-      function controladorListarUsuario($http,$stateParams, $state,  $location, servicioUsuarios) {
+      function controladorUsuariosDesactivados($http,$stateParams, $state,  $location, servicioUsuarios) {
         let vm = this;
 
         

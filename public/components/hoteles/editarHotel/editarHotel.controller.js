@@ -4,9 +4,9 @@
     .module ('hoteles')
     .controller ('controladorEditarHotel', controladorEditarHotel);
 
-  controladorEditarHotel.$inject = [ '$http','$state','$stateParams','$location','servicioHoteles',];
+  controladorEditarHotel.$inject = [ '$http','$stateParams','$state','$location','servicioHoteles',];
 
-  function controladorEditarHotel ( $http,$state,$stateParams, $location, servicioHoteles ) {
+  function controladorEditarHotel ( $http,$stateParams,$state, $location, servicioHoteles ) {
     let vm = this;
 
     vm.editHotel = {};
@@ -53,7 +53,35 @@
           servicioHoteles.actualizarHotel (objEditar);
         }
       });
-      $state.go ('listarUsuarios');
+      $state.go ('listarHotel');
     };
+
+     vm.Eliminar = (pEstado)=>{
+          let listaHoteles = servicioHoteles.getHoteles();
+          let hotel = {};
+          listaHoteles.forEach(objHotel => {
+            if (objHotel._id === objHotelAEditar._id) {
+              
+              objHotel.actualizarEstado(pEstado);
+              hotel = objHotel;
+            }
+           servicioHoteles.actualizarHotel (hotel);
+          });
+          $state.go ('listarHotel');
+        };
+
+         vm.Activar = (pEstado)=>{
+          let listaHoteles = servicioHoteles.getHoteles();
+          let hotel = {};
+          listaHoteles.forEach(objHotel => {
+            if (objHotel._id === objHotelAEditar._id) {
+              
+              objHotel.actualizarEstado(pEstado);
+              hotel = objHotel;
+            }
+           servicioHoteles.actualizarHotel (hotel);
+          });
+          $state.go ('listarHotel');
+        };
   }
 }) ();

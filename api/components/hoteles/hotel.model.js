@@ -15,6 +15,8 @@ var HotelSchema = new mongoose.Schema ({
   telefonoServicio: {type: String, required: true},
   email: {type: String, required: true},
   emailServicio: {type: String, required: true},
+  estado: {type: String},
+  
   
 
 });

@@ -11,6 +11,11 @@ class Usuario {
         this.tipo = pTipo;
         this.telefono = pTelefono;
         this.password = pPassword;
+        this.estado = 'activo';
+    }
+
+    actualizarEstadoUsuario(pEstado){
+        this.estado = pEstado;
 
     }
 
@@ -120,8 +125,13 @@ class Hotel{
         this.telefonoServicio = pTelefonoServicio;
         this.email = pEmail;
         this.emailServicio = pEmailServicio;
+        this.estado = 'activo';
     }
+     
+    actualizarEstado(pEstado){
+        this.estado = pEstado;
 
+    }
     getNombreHotel(){
         return this.nombre;
     }

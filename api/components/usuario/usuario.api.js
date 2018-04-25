@@ -12,7 +12,9 @@ module.exports.registrar = (req, res) => {
       email: req.body.email,
       tipo : req.body.tipo,
       telefono: req.body.telefono,
-      password: req.body.password
+      password: req.body.password,
+      estado: req.body.estado,
+      
   });
   
 

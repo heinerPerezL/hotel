@@ -48,7 +48,7 @@
         controllerAs: 'vm'
       })
 
-      .state('registrarUsario', {
+      .state('registrarUsuario', {
         url: '/registrarUsuario',
         templateUrl: './components/usuarios/registroUsuario/RegistroUsuarios.view.html',
         data:{
@@ -153,6 +153,42 @@
           }]
         },
         controller: 'controladorEditarHotel',
+        controllerAs: 'vm'
+      })
+
+      .state('listarHotelDesactivados', {
+        url: '/listarHotelDesactivados',
+        templateUrl: './components/hoteles/hotelesDesactivados/hotelesDesac.view.html',
+        data:{
+          pageTitle: 'Hoteles Desactivados'
+        },
+        params: {
+          objHotelTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/hoteles/hotelesDesactivados/hotelesDesactivados.controller.js')
+          }]
+        },
+        controller: 'controladorHotelesDesactivados',
+        controllerAs: 'vm'
+      })
+
+      .state('usuariosDesactivados', {
+        url: '/usuariosDesactivados',
+        templateUrl: './components/usuarios/usuariosDesactivados/usuariosDesac.view.html',
+        data:{
+          pageTitle: 'Clientes Desactivados'
+        },
+        params: {
+          objClienteTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/usuariosDesactivados/usuariosDesac.controller.js')
+          }]
+        },
+        controller: 'controladorUsuariosDesactivados',
         controllerAs: 'vm'
       })
 
