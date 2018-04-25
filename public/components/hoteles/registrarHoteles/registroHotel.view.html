@@ -1,27 +1,22 @@
 <div ng-include="'./components/includes/navbar.html'"></div>
 
 <div class="container">
-    <form class="form row" ng-submit="vm.regitrarHotel(vm.nuevoHotel)">
+    <form class="form row" ng-submit="vm.preRegisterHotel(vm.nuevoHotel)">
         <div class="col-12 col-md-6">
             <div class="form-group">
                 <label for="">Foto</label>
-                <input type="file" class="form-control" ng-model="vm.nuevoHotel.foto">
+                <input type="file" class="form-control" ng-model="vm.nuevoHotel.foto"img-upload>
             </div>
             <div class="form-group">
                 <label for="">Nombre</label>
                 <input type="text" class="form-control" ng-model="vm.nuevoHotel.nombre">
             </div>
-            <div class="form-group">
-                <label for="">Latitud</label>
-                <input type="text" class="form-control" ng-model="vm.nuevoHotel.latitud">
-            </div>
-            <div class="form-group">
-                <label for="">Longitud</label>
-                <input type="text" class="form-control" ng-model="vm.nuevoHotel.longitud">
-            </div>
+        <ng-map id="map" center="current-location" styles="width: 50%; height: 20em;">
+            <marker position="current-location" draggable="true" on-dragend="vm.getCurrentLocation($event)" coords="marker.coords" options="marker.options"></marker>
+        </ng-map>
             <div class="form-group">
                 <label for="">Provincia</label>
-                <input list="sltProvincia" class="form-control" name="sltProvincia" ng-change="vm.rellenarCantones(vm.nuevoHotel.province)"
+                <input list="sltProvincia" class="form-control" name="sltProvincia" ng-change="vm.rellenarCantones(vm.nuevoHotel.provincia)"
                     ng-model="vm.nuevoHotel.provincia" required>
                 <datalist id="sltProvincia">
                     <option ng-repeat="provincia in vm.provincias track by provincia._id" value="{{provincia.name}}" id="{{provincia._id}}">

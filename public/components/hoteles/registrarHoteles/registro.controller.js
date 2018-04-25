@@ -4,9 +4,9 @@
     .module('hoteles')
     .controller('controladorRegistroHotel', controladorRegistroHotel);
 
-  controladorRegistroHotel.$inject = ['$http', '$state', '$location', 'servicioHoteles', 'imageService', 'Upload'];
+  controladorRegistroHotel.$inject = ['$http', '$state', '$location', 'servicioHoteles', 'imageService', 'Upload','NgMap'];
 
-  function controladorRegistroHotel($http, $state, $location, servicioHoteles, imageService, Upload) {
+  function controladorRegistroHotel($http, $state, $location, servicioHoteles, imageService, Upload,NgMap) {
     const vm = this;
 
     vm.nuevoHotel = {};
@@ -64,9 +64,24 @@
         vm.regitrarHotel(pNuevoHotel, data.url);
      });
     }
+
+    NgMap.getMap("map").then((map) => {
+      console.log(map.getCenter());
+      console.log('markers', map.markers);
+      console.log('shapes', map.shapes);
+      vm.map = map;
+    });
+
+    vm.getCurrentLocation = ($event) => {
+      let postion = [$event.latLng.lat(), $event.latLng.lng()];
+      console.log(postion);
+      vm.current = postion;
+    }
     
     vm.regitrarHotel = (pNuevoHotel, imgUrl) => {
       pNuevoHotel.foto = imgUrl;
+      pNuevoHotel.latitud = vm.current[0];
+      pNuevoHotel.longitud = vm.current[1];
 
       let tempHotel = Object.assign(new Hotel(), pNuevoHotel);
 

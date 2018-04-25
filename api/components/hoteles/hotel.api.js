@@ -29,7 +29,7 @@ module.exports.registrar = (req, res) => {
         msj: 'Ha ocurrido un error en el registro de hoteles' + err,
       });
     } else {
-      res.json ({success: true, msj: 'Se registró el articulo correctamente'});
+      res.json ({success: true, msj: 'Se registró el hotel correctamente'});
     }
   });
 };
