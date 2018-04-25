@@ -4,6 +4,7 @@ module.exports.registrar = (req, res) => {
  // var newHotel = Object.assign (new hotel (), req.body);
   var newHotel = new HotelModel({
       foto: req.body.foto,
+      nombre: req.body.nombre,
       latitud: req.body.latitud,
       longitud: req.body.longitud,
       provincia: req.body.provincia,
@@ -14,6 +15,7 @@ module.exports.registrar = (req, res) => {
       telefonoServicio: req.body.telefonoServicio,
       email: req.body.email,
       emailServicio: req.body.emailServicio,
+      estado:req.body.estado
       
       
   });

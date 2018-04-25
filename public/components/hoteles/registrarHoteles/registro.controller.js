@@ -73,10 +73,19 @@
       let registroExitoso = servicioHoteles.addHotel(tempHotel);
       if (registroExitoso == 'Se registró el hotel correctamente') {
         swal("Registro exitoso", "El hotel ha sido registrado correctamente", "success", {
-          button: "Aceptar",
         });
-        $location.path('/listaHoteles');
-      }
+        $state.go ('listarHotel');
+
+      }else{
+          swal({
+            title: "registro fallido",
+            text: "error al registrar",
+            icon: "error",
+          })
+          $state.go ('registrarHotel');
+
+
+        }
     }
 
   }

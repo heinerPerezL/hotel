@@ -30,6 +30,8 @@
 
           });
           vm.nuevoUsuario = null;
+          $state.go ('listarHotel');
+
         }else{
           swal({
             title: "registro fallido",
@@ -37,8 +39,12 @@
             icon: "error",
             button: "aceptar"
           })
+          $state.go ('registrarUsuario');
+
+
         }
 
+     
 
 
     }

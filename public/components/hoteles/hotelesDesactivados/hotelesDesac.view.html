@@ -1,18 +1,11 @@
 <div ng-include="'./components/includes/navbar.html'"></div>
-
-<form class="">
-    <div class=" col-12 col-md-4 mt-5 mb-5">
-        <label for="">Buscar</label>
-        <input type="text" class="form-control" ng-model="buscarHotel" placeholder="ingrese metodo de busqueda">
-    </div>
-</form>
 <table class="table">
     <h1 class="col-12">Hoteles</h1>
     <hr/>
     <thead class="table-primary">
         <tr>
             <th>Foto</th>
-            <th><a class="puntero" ng-click="columna = 'nombre'; reverse = !reverse">Nombre</a></th>
+            <th>Nombre</th>
             <th>Ubicacion</th>
             <th>Dirección</th>
             <th>Dirección exacta</th>
@@ -21,11 +14,12 @@
             <th>Email</th>
             <th>Email para reservaciones</th>
             <th>Modificar</th>
+            <th>Desactivar</th>
             
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="hotel in vm.listaHoteles | filter:buscarHotel | orderBy:columna: reverse" ng-if="hotel.estado === 'activo'">
+        <tr ng-repeat="hotel in vm.listaHoteles" ng-if="hotel.estado === 'inactivo'">
             <td>
                 <img src="{{hotel.foto}}" width="50" height="50">
             </td>

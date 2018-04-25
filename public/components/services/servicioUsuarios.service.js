@@ -24,12 +24,10 @@
         function _addUsuario(pNuevoUsuario) {
 
           let registro;
-         
             
-           registro = dataStorageFactory.setUsuarioData(pNuevoUsuario);
-            
+          registro = dataStorageFactory.setUsuarioData(pNuevoUsuario);
 
-            return registro;
+           return registro;
 
 
         }
@@ -44,6 +42,9 @@
                 listaUsuariosDB.forEach(obj => {
                     
                         let nuevoUsuario = Object.assign(new Usuario(), obj);
+                         nuevoUsuario.actualizarEstadoUsuario(obj.estado);
+
+
                         listaUsuarios.push(nuevoUsuario);
 
                         nuevoUsuario.setId(obj._id);

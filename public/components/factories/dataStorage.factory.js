@@ -49,6 +49,8 @@
           tipo : data.tipo,
           telefono: data.telefono,
           password: data.password,
+          estado:data.estado,
+          
         },
       });
 
@@ -113,6 +115,8 @@
           'tipo' : data.tipo,
           'telefono': data.telefono,
           'password': data.password,
+          'estado':data.estado,
+          
         },
       });
 
@@ -195,6 +199,7 @@
           telefonoServicio: data.telefonoServicio,
           email: data.email,
           emailServicio: data.emailServicio,
+          estado:data.estado,
           
         },
       });
@@ -260,6 +265,8 @@
           'telefonoServicio': data.telefonoServicio,
           'email': data.email,
           'emailServicio': data.emailServicio,
+           'estado':data.estado,
+          
           
         },
       });

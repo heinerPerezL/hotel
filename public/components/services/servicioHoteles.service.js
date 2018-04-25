@@ -27,6 +27,8 @@
 
       listaHotelesDB.forEach (objHotel => {
         let nuevoHotel = Object.assign (new Hotel (), objHotel);
+            nuevoHotel.actualizarEstado(objHotel.estado);
+            
         listaHoteles.push (nuevoHotel);
 
         nuevoHotel.setIdHotel (objHotel._id);

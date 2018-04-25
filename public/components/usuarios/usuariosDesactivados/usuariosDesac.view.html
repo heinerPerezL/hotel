@@ -1,0 +1,63 @@
+<div ng-include="'./components/includes/navbar.html'"></div>
+
+<div navegacion-Principal></div>
+<div menu-Lateral></div>
+<section id="">
+    <div class="container">
+        <form class="row">
+            <div class=" col-xs-12 col-md-4">
+                <label for="">Buscar por Nombre</label>
+                <input type="text" class="form-control" ng-model="buscarUsuario" placeholder="ingrese metodo de busqueda">
+
+            </div>
+
+        </form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <a class="puntero" ng-click="columna = 'Cedula'; reverse = !reverse">Cédula</a>
+                    </th>
+                    <th>
+                        <a class="puntero" ng-click="columna = 'PrimerNombre'; reverse = !reverse">Primer Nombre</a>
+                    </th>
+                    <th>
+                        <a class="puntero" ng-click="columna = 'SegundoNombre'; reverse = !reverse">Segundo Nombre</a>
+                    </th>
+                    <th>
+                        <a class="puntero" ng-click="columna = 'PrimerApellido'; reverse = !reverse">Primer Apellido</a>
+                    </th>
+                    <th>
+                        <a class="puntero" ng-click="columna = 'SegundoApellido'; reverse = !reverse">Segundo Apellido</a>
+                    </th>
+                    <th>
+                        <a class="puntero" ng-click="columna = 'FechaNacimiento'; reverse = !reverse"></a> Fecha Nacimiento</th>
+                    <th>
+                        <a class="puntero" ng-click="columna = 'Email'; reverse = !reverse">Email</a>
+                    </th>
+                    <th>
+                        <a class="puntero" ng-click="columna = 'Telefono'; reverse = !reverse">Telefono</a>
+                    </th>
+                </tr>
+                </th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="usuario in vm.listaUsuarios | filter:buscarUsuario | orderBy:columna: reverse" ng-if="usuario.estado === 'inactivo'">
+                    <td>{{usuario.cedula}}</td>
+                    <td>{{usuario.primerNombre}}</td>
+                    <td>{{usuario.segundoNombre}}</td>
+                    <td>{{usuario.primerApellido}}</td>
+                    <td>{{usuario.segundoApellido}}</td>
+                    <td>{{usuario.fechaNacimiento}}</td>
+                    <td>{{usuario.email}}</td>
+                    <td>{{usuario.telefono}}</td>
+
+                    <td>
+                        <button type="button" ng-click="vm.editarUsuario(usuario)">Editar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
