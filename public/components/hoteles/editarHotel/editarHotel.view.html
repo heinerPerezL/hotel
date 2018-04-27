@@ -1,78 +1,77 @@
 <div ng-include="'./components/includes/navbar.html'"></div>
 
 <div class="container">
-    <form class="form" ng-submit="vm.editarHotel(vm.editHotel)">
-        <div class="form-group">
-            <label for="">Foto</label>
-            <input type="file" class="form-control" ng-model="vm.editHotel.foto">
-        </div>
-        <div class="form-group">
-            <label for="">Nombre</label>
-            <input type="text" class="form-control" ng-model="vm.editHotel.nombre">
-        </div>
-        <div class="form-group">
-            <label for="">Latitud</label>
-            <input type="text" class="form-control" ng-model="vm.editHotel.latitud">
-        </div>
-        <div class="form-group">
-            <label for="">Longitud</label>
-            <input type="text" class="form-control" ng-model="vm.editHotel.longitud">
-        </div>
-        <div class="form-group">
-            <label for="">Provincia</label>
-            <input list="sltProvincia" class="form-control" name="sltProvincia" ng-change="vm.rellenarCantones(vm.editHotel.provincia)"
-                ng-model="vm.editHotel.provincia" required>
-            <datalist id="sltProvincia">
-                <option ng-repeat="provincia in vm.provincias track by provincia._id" value="{{provincia.name}}" id="{{provincia._id}}">
-            </datalist>
-        </div>
-        <div class="form-group">
-            <label for="">Cantón</label>
-            <input list="sltCanton" name="sltCanton" class="form-control" ng-change="vm.rellenarDistrito(vm.editHotel.canton)" ng-model="vm.editHotel.canton"
-                required>
-            <datalist id="sltCanton">
-                <option ng-repeat="canton in vm.cantones" value="{{canton.name}}">
-            </datalist>
-        </div>
-        <div class="form-group">
-            <label for="">Distrito</label>
-            <input list="sltDistrito" name="sltDistrito" class="form-control" ng-model="vm.editHotel.distrito" required>
-            <datalist id="sltDistrito">
-                <option ng-repeat="distrito in vm.distritos" value="{{distrito.name}}">
-            </datalist>
-        </div>
-        <div class="form-group">
-            <label for="">Direccion</label>
-            <input type="text" class="form-control" ng-model="vm.editHotel.direccionExacta">
-        </div>
-        <div class="form-group">
-            <label for="">Telefono</label>
-            <input type="text" class="form-control" ng-model="vm.editHotel.telefono">
-        </div>
-        <div class="form-group">
-            <label for="">Telefono de servicio</label>
-            <input type="text" class="form-control" ng-model="vm.editHotel.telefonoServicio">
-        </div>
-        <div class="form-group">
-            <label for="">Email</label>
-            <input type="text" class="form-control" ng-model="vm.editHotel.email">
-        </div>
-        <div class="form-group">
-            <label for="">Email de servicio</label>
-            <input type="text" class="form-control" ng-model="vm.editHotel.emailServicio">
-        </div>
-        <div class="form-group">
+<form class="form row " ng-submit="vm.editarHotel(vm.editHotel)">
+    <div class="form-group col-12 col-md-6">
+        <label for="">Foto</label>
+        <input type="file" class="form-control" ng-model="vm.editHotel.foto" img-upload>
+    </div>
+    <div class="form-group col-12 col-md-6 ">
+        <label for="">Nombre</label>
+        <input type="text" class="form-control" ng-model="vm.editHotel.nombre" required>
+    </div>
+    <ng-map id="map" center="current-location" styles="width: 50%; height: 20em;">
+        <marker position="current-location" draggable="true" on-dragend="vm.getCurrentLocation($event)" coords="marker.coords" options="marker.options"></marker>
+    </ng-map>
+    <div class="form-group col-12 col-md-6 ">
+        <label for="">Provincia</label>
+        <input list="sltProvincia" class="form-control" name="sltProvincia" ng-change="vm.rellenarCantones(vm.editHotel.provincia)"
+            ng-model="vm.editHotel.provincia" required>
+        <datalist id="sltProvincia">
+            <option ng-repeat="provincia in vm.provincias track by provincia._id" value="{{provincia.name}}" id="{{provincia._id}}">
+        </datalist>
+    </div>
+    <div class="form-group col-12 col-md-6">
+        <label for="">Cantón</label>
+        <input list="sltCanton" name="sltCanton" class="form-control" ng-change="vm.rellenarDistrito(vm.editHotel.canton)" ng-model="vm.editHotel.canton"
+            required>
+        <datalist id="sltCanton">
+            <option ng-repeat="canton in vm.cantones" value="{{canton.name}}">
+        </datalist>
+    </div>
+    <div class="form-group col-12 col-md-6">
+        <label for="">Distrito</label>
+        <input list="sltDistrito" name="sltDistrito" class="form-control" ng-model="vm.editHotel.distrito" required>
+        <datalist id="sltDistrito">
+            <option ng-repeat="distrito in vm.distritos" value="{{distrito.name}}">
+        </datalist>
+    </div>
+    <div class="form-group col-12 col-md-6">
+        <label for="">Direccion</label>
+        <input type="text" class="form-control" ng-model="vm.editHotel.direccionExacta" required>
+    </div>
+    <div class="form-group col-12 col-md-6">
+        <label for="">Telefono</label>
+        <input type="number" class="form-control" ng-model="vm.editHotel.telefono" required>
+    </div>
+    <div class="form-group col-12 col-md-6">
+        <label for="">Telefono de servicio</label>
+        <input type="number" class="form-control" ng-model="vm.editHotel.telefonoServicio" required>
+    </div>
+    <div class="form-group col-12 col-md-6">
+        <label for="">Email</label>
+        <input type="email" class="form-control" ng-model="vm.editHotel.email">
+    </div>
+    <div class="form-group col-12 col-md-6">
+        <label for="">Email de servicio</label>
+        <input type="email" class="form-control" ng-model="vm.editHotel.emailServicio">
+    </div>
+        <div class="form-group ">
             <button type="sumbmit" class="btn btn-default">Editar</button>
         </div>
         <div>
-            <button type="button" class="btn" ng-click="vm.Eliminar('inactivo')">
-                Desactivar</i>
+            <button type="button" class="btn mx-5" ng-click="vm.Eliminar('inactivo')">
+                Desactivar
             </button>
         </div>
         <div>
             <button type="button" class="btn" ng-click="vm.Activar('activo')">
-                Activar</i>
+                Activar
             </button>
         </div>
-    </form>
+
+</form>
+
+    </div>
+    
 </div>

@@ -15,11 +15,11 @@
     };
 
     let publicAPI = {
-      getConfiguration: _getConfiguration,
+      getConfiguracion: _getConfiguracion,
     };
     return publicAPI;
 
-    function _getConfiguration () {
+    function _getConfiguracion () {
       return cloudObj;
     }
   }

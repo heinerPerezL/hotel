@@ -11,8 +11,8 @@
 
         // vm.editArticulo = (pArticulo)=>{
 
-
-          
+        
+         vm.usuarioAutenticado= getAutenticacion();
         // $state.go('main.editarArticulo', {objArticuloTemp : JSON.stringify(pArticulo)});
         // };
         
@@ -23,7 +23,7 @@
         $state.go('editarHotel', {objHotelTemp : JSON.stringify(pHotel)});
         };
         
-
+      
        
         
        

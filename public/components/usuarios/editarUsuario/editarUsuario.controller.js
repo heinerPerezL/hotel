@@ -24,7 +24,7 @@
     vm.editUsuario.segundoNombre = objUsuarioAEditar.segundoNombre;
     vm.editUsuario.primerApellido = objUsuarioAEditar.primerApellido;
     vm.editUsuario.segundoApellido = objUsuarioAEditar.segundoApellido;
-    vm.editUsuario.fechaNacimiento = objUsuarioAEditar.fechaNacimiento;
+    vm.editUsuario.fechaNacimiento = new date (objUsuarioAEditar.fechaNacimiento);
     vm.editUsuario.email = objUsuarioAEditar.email;
     vm.editUsuario.telefono = objUsuarioAEditar.telefono;
     vm.editUsuario.password = objUsuarioAEditar.password;

@@ -1,45 +1,46 @@
 <div ng-include="'./components/includes/navbar.html'"></div>
 
 <div class="container">
-    <form class="form" ng-submit="vm.regitrarUsuario(vm.nuevoUsuario)">
-        <div class="form-group">
+    <h1>REGISTRO DE CLIENTE</h1>
+    <form class="form row" ng-submit="vm.regitrarUsuario(vm.nuevoUsuario)">
+        <div class="form-group col-12 col-md-4 ">
             <label for="">Cédula</label>
-            <input type="text" class="form-control" ng-model="vm.nuevoUsuario.cedula">
+            <input type="text" class="form-control" ng-model="vm.nuevoUsuario.cedula"pattern="^[0-9]\d{8}$" minlength="9" maxlength="9" autocomplete="off" required>
         </div>
-        <div class="form-group">
-            <label for="">Primer nombre</label>
-            <input type="text" class="form-control" ng-model="vm.nuevoUsuario.primerNombre">
+        <div class="form-group col-12 col-md-4">
+            <label for=""> Nombre</label>
+            <input type="text" class="form-control" ng-model="vm.nuevoUsuario.primerNombre" pattern="[ñáéíóúA-Za-z ]+" autocomplete="off" required>
         </div>
-        <div class="form-group">
-            <label for="">Segundo nombre</label>
-            <input type="text" class="form-control" ng-model="vm.nuevoUsuario.segundoNombre">
+        <div class="form-group col-12 col-md-4">
+            <label for="">Segundo Nombre</label>
+            <input type="text" class="form-control" ng-model="vm.nuevoUsuario.segundoNombre" pattern="[ñáéíóúA-Za-z ]+" autocomplete="off" required>
         </div>
-        <div class="form-group">
+        <div class="form-group col-12 col-md-4">
             <label for="">Primer apellido</label>
-            <input type="text" class="form-control" ng-model="vm.nuevoUsuario.primerApellido">
+            <input type="text" class="form-control" ng-model="vm.nuevoUsuario.primerApellido" pattern="[ñáéíóúA-Za-z ]+" autocomplete="off" required>
         </div>
-        <div class="form-group">
+        <div class="form-group col-12 col-md-4">
             <label for="">Segundo apellido</label>
-            <input type="text" class="form-control" ng-model="vm.nuevoUsuario.segundoApellido">
+            <input type="text" class="form-control" ng-model="vm.nuevoUsuario.segundoApellido" pattern="[ñáéíóúA-Za-z ]+" autocomplete="off" required>
         </div>
-        <div class="form-group">
+        <div class="form-group col-12 col-md-4">
             <label for="">Fecha de nacimiento</label>
-            <input type="text" class="form-control" ng-model="vm.nuevoUsuario.fechaNacimiento">
+            <input type="date" class="form-control" ng-model="vm.nuevoUsuario.fechaNacimiento"required>
         </div>
-        <div class="form-group">
+        <div class="form-group col-12 col-md-4">
             <label for="">Email</label>
-            <input type="text" class="form-control" ng-model="vm.nuevoUsuario.email">
+            <input type="email" class="form-control" ng-model="vm.nuevoUsuario.email"required>
         </div>
-        <div class="form-group">
+        <div class="form-group col-12 col-md-4">
             <label for="">Teléfono</label>
-            <input type="text" class="form-control" ng-model="vm.nuevoUsuario.telefono">
+            <input type="number" class="form-control" ng-model="vm.nuevoUsuario.telefono"required>
         </div>
-        <div class="form-group">
+        <div class="form-group col-12 col-md-4">
             <label for="">Contraseña</label>
-            <input type="password" class="form-control" ng-model="vm.nuevoUsuario.password">
+            <input type="password" class="form-control" ng-model="vm.nuevoUsuario.password"required>
         </div>
-        <div class="form-group">
-            <button type="sumbmit" class="btn btn-default">Registrar</button>
+        <div class="form-group  ">
+            <button type="sumbmit" class="btn btn-defaultr">Registrar</button>
         </div>
     </form>
 </div>

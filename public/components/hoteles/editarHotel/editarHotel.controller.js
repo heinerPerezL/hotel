@@ -4,9 +4,9 @@
     .module ('hoteles')
     .controller ('controladorEditarHotel', controladorEditarHotel);
 
-  controladorEditarHotel.$inject = [ '$http','$stateParams','$state','$location','servicioHoteles',];
+  controladorEditarHotel.$inject = [ '$http','$stateParams','$state','$location','servicioHoteles','imageService', 'Upload', 'NgMap'];
 
-  function controladorEditarHotel ( $http,$stateParams,$state, $location, servicioHoteles ) {
+  function controladorEditarHotel ( $http,$stateParams,$state, $location, servicioHoteles,imageService, Upload, NgMap ) {
     let vm = this;
 
     vm.editHotel = {};
@@ -17,22 +17,47 @@
 
     //  vm.objHotelNuevo.setId(objHotelAEditar._id);
 
-    vm.editHotel.foto = objHotelAEditar.foto;
-    vm.editHotel.nombre = objHotelAEditar.nombre;
-    vm.editHotel.latitud = objHotelAEditar.latitud;
-    vm.editHotel.longitud = objHotelAEditar.longitud;
-    vm.editHotel.provincia = objHotelAEditar.provincia;
-    vm.editHotel.canton = objHotelAEditar.canton;
-    vm.editHotel.distrito = objHotelAEditar.distrito;
-    vm.editHotel.direccionExacta = objHotelAEditar.direccionExacta;
-    vm.editHotel.telefono = objHotelAEditar.telefono;
-    vm.editHotel.telefonoServicio = objHotelAEditar.telefonoServicio;
-    vm.editHotel.email = objHotelAEditar.email;
-    vm.editHotel.emailServicio = objHotelAEditar.emailServicio;
+    vm.editHotel.foto = objHotelNuevo.foto;
+    vm.editHotel.nombre = objHotelNuevo.nombre;
+    vm.editHotel.latitud = objHotelNuevo.latitud;
+    vm.editHotel.longitud = objHotelNuevo.longitud;
+    vm.editHotel.provincia = objHotelNuevo.provincia;
+    vm.editHotel.canton = objHotelNuevo.canton;
+    vm.editHotel.distrito = objHotelNuevo.distrito;
+    vm.editHotel.direccionExacta = objHotelNuevo.direccionExacta;
+    vm.editHotel.telefono = objHotelNuevo.telefono;
+    vm.editHotel.telefonoServicio = objHotelNuevo.telefonoServicio;
+    vm.editHotel.email = objHotelNuevo.email;
+    vm.editHotel.emailServicio = objHotelNuevo.emailServicio;
     
+    
+    vm.cloudObj = imageService.getConfiguracion ();
 
-    vm.editarHotel = pHotel => {
-      let listaHoteles = servicioHoteles.getHoteles ();
+    vm.editarHotel = (pNewHotel) => {
+  vm.cloudObj.data.file = pNewHotel.foto[0];
+  Upload.upload (vm.cloudObj).success ((data) => {
+    vm.completarEdicionHotel (pNewHotel, data.url);
+  });
+};
+
+
+
+
+vm.pos = [JSON.stringify(vm.editHotel.latitud), JSON.stringify(vm.editHotel.longitud)];
+      vm.getCurrentLocation = ($event) => {
+        let postion = [$event.latLng.lat(), $event.latLng.lng()];
+        console.log(postion);
+        vm.current = postion;
+      }
+
+
+    vm.completarEdicionHotel = (pHotel,url) => {
+      let listaHoteles = servicioHoteles.getHoteles();
+      pHotel.foto = url;
+      pHotel.latitud = vm.current[0];
+      pHotel.longitud = vm.current[1];
+
+
 
       listaHoteles.forEach (objEditar => {
         if (objEditar._id == objHotelNuevo._id) {
@@ -48,6 +73,7 @@
           objEditar.telefonoServicio = pHotel.telefonoServicio;
           objEditar.email = pHotel.email;
           objEditar.emailServicio = pHotel.emailServicio;
+          
           
 
           servicioHoteles.actualizarHotel (objEditar);

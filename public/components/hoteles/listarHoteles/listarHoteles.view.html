@@ -1,75 +1,40 @@
 <div ng-include="'./components/includes/navbar.html'"></div>
 
-<form class="">
+
+<form class="ancho">
+    <h1>Lista de hoteles</h1>
     <div class=" col-12 col-md-4 mt-5 mb-5">
-        <label for="">Buscar</label>
+        <label  for="">Buscar</label>
         <input type="text" class="form-control" ng-model="buscarHotel" placeholder="ingrese metodo de busqueda">
     </div>
 </form>
-<table class="table">
-    <h1 class="col-12">Hoteles</h1>
-    <hr/>
-    <thead class="table-primary">
-        <tr>
-            <th>Foto</th>
-            <th>
-                <a class="puntero" ng-click="columna = 'nombre'; reverse = !reverse">Nombre</a>
-            </th>
-            <th>Ubicacion</th>
-            <th>Dirección</th>
-            <th>Dirección exacta</th>
-            <th>Teléfono</th>
-            <th>Teléfono de reservaciones</th>
-            <th>Email</th>
-            <th>Email para reservaciones</th>
-            <th>Modificar</th>
 
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="hotel in vm.listaHoteles | filter:buscarHotel | orderBy:columna: reverse" ng-if="hotel.estado === 'activo'">
-            <td>
-                <img src="{{hotel.foto}}" width="50" height="50">
-            </td>
-            <td>{{hotel.nombre}}</td>
-            <td>
-                <ng-map id="map" center="{{hotel.latitud}}, {{hotel.longitud}}" styles="width: 50%; height: 20em;">
-                    <marker position="{{hotel.latitude}}, {{hotel.longitude}}"></marker>
-                </ng-map>
-            </td>
-            <td>{{hotel.getDireccion()}}</td>
-            <td>{{hotel.direccionExacta}}</td>
-            <td>{{hotel.telefono}}</td>
-            <td>{{hotel.telefonoServicio}}</td>
-            <td>{{hotel.email}}</td>
-            <td>{{hotel.emailServicio}}</td>
+   <div class="container ancho">
+    <div class="row">
+       
+        <div class="col-12 col-lg-3 p-2 my-2 d-flex justify-content-between" ng-repeat="hotel in vm.listaHoteles | filter:buscarHotel | orderBy:columna: reverse" ng-if="hotel.estado === 'activo'">
+            <div class="card" style="width: 25rem; ">
+                <img id="img" ng-hide="ocultar" class="card-img-top p-1 " src="{{hotel.foto}}" alt="Card image cap">
+                <div class="card-img-top p-1" >
+                    <ng-map class="mapa" ng-show="ocultar" id="mapa" center="{{hotel.latitud}}, {{hotel.longitud}}" style="  width: 100%; height: 175px;">
+                        <marker position="{{hotel.latitud}}, {{hotel.longitud}}"></marker>
+                    </ng-map>
+                </div>
 
 
-            <td>
-                <button class="btn " type="button" ng-click="vm.editarHotel(hotel)">
-                    <i class="far fa-edit"></i>
-                </button>
-            </td>
-
-
-            <!-- <td><button type="button" class="btn" ng-click="vm.cambiarEstado('inactivo', usuario)"><i class="far fa-times-circle"></i></button></td> -->
-        </tr>
-    </tbody>
-</table>
-<div class="container">
-    <div class="row d-flex justify-content-between">
-        <div class="col-12 col-md-3 p-2 my-2 d-flex justify-content-between" ng-repeat="hotel in vm.listaHoteles">
-            <div class="card" style="width: 20rem; ">
-                <img class="card-img-top p-1" src="{{hotel.foto}}" alt="Card image cap">
-                <img class="card-img-top p-1" src="{{hotel.foto}}" alt="Card image cap">
-
-                <div class="card-block">
-                    <h4 class="card-title">{{hotel.nombre}}</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                <div class="card-block p-1">
+                    <input type="checkbox" ng-model="ocultar"><span>Mapa</span>
+                    <h4 class="card-title p-1">{{hotel.nombre}}</h4>
+                    <p class="card-text p-1">Ubicado en {{hotel.getDireccion()}}</p>
+                    <p class="card-text p-1">Para informacion contactenos al telefono {{hotel.telefonoServicio}} o al correo {{hotel.emailServicio}}.</p>
+                    
+                    <a href="#" class="btn btn-primary" >CALIFICAR</a>
+                    <button class="btn " type="button" ng-click="vm.editarHotel(hotel)">
+                        <i class="far fa-edit"></i>
+                    </button>
                 </div>
             </div>
         </div>
 
     </div>
-</div>
+</div> 

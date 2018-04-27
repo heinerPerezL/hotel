@@ -1,0 +1,33 @@
+#landing{
+
+  
+    
+    .banner {
+        width: 100%;
+        height: 100px;
+        display: block;
+        position: relative;
+        top: -60px;
+        z-index: -1000;
+    }
+
+    .infobanner {
+        display: block;
+        position: absolute;
+        top: 0%;
+        padding-top: 200px;
+    }
+
+     
+  
+
+  .texto{
+      position: absolute;
+      top: -100px;
+  }
+
+  .ancho{
+     padding-left: 70%;
+  }
+
+}

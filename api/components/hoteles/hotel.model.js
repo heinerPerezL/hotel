@@ -3,7 +3,7 @@ const mongoose = require ('mongoose');
 
 //Esquema de Hotels
 var HotelSchema = new mongoose.Schema ({
-  foto: {type: String,required: true},
+  foto: {type: String},
   nombre: {type: String, required: true, unique :true},
   latitud: {type: String, required: true},
   longitud: {type: String, required: true},

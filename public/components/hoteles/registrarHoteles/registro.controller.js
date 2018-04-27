@@ -56,12 +56,12 @@
     }
 
 
-    vm.cloudObj = imageService.getConfiguration();
+    vm.cloudObj = imageService.getConfiguracion();
 
-    vm.preRegisterHotel = (pNuevoHotel) => {
+    vm.preRegistroHotel = (pNuevoHotel) => {
       vm.cloudObj.data.file = pNuevoHotel.foto[0];
       Upload.upload(vm.cloudObj).success((data) =>{
-        vm.regitrarHotel(pNuevoHotel, data.url);
+        vm.registrarHotel(pNuevoHotel, data.url);
      });
     }
 
@@ -78,7 +78,7 @@
       vm.current = postion;
     }
     
-    vm.regitrarHotel = (pNuevoHotel, imgUrl) => {
+    vm.registrarHotel = (pNuevoHotel, imgUrl) => {
       pNuevoHotel.foto = imgUrl;
       pNuevoHotel.latitud = vm.current[0];
       pNuevoHotel.longitud = vm.current[1];
