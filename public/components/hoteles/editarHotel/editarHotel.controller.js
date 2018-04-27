@@ -1,13 +1,17 @@
+
 (() => {
   'use strict';
   angular
     .module ('hoteles')
     .controller ('controladorEditarHotel', controladorEditarHotel);
 
-  controladorEditarHotel.$inject = [ '$http','$stateParams','$state','$location','servicioHoteles','imageService', 'Upload', 'NgMap'];
+  controladorEditarHotel.$inject = [ '$http','$stateParams','$state','$location','servicioHoteles','imageService', 'Upload', 'NgMap', 'loginService'];
 
-  function controladorEditarHotel ( $http,$stateParams,$state, $location, servicioHoteles,imageService, Upload, NgMap ) {
+  function controladorEditarHotel ( $http,$stateParams,$state, $location, servicioHoteles,imageService, Upload, NgMap, loginService ) {
     let vm = this;
+
+    vm.cerrarSesion = loginService.logOut();
+
 
     vm.editHotel = {};
 

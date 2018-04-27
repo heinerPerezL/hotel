@@ -1,5 +1,7 @@
 <div ng-include="'./components/includes/navbar.html'"></div>
 
+<button ng-click="vm.cerrarSesion()">Cerrar Sesion</button>
+
 <div class="container">
 <form class="form row " ng-submit="vm.editarHotel(vm.editHotel)">
     <div class="form-group col-12 col-md-6">
@@ -69,7 +71,6 @@
                 Activar
             </button>
         </div>
-
 </form>
 
     </div>

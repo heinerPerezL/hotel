@@ -1,8 +1,7 @@
-<div ng-include="'./components/includes/navbar.html'"></div>
-
-<div class="container">
-    <div class="row justify-content-center d-flex align-items-center ">
+<div class="container mt-5 pt-5" style="margin-top:30px;">
+    <div class="row justify-content-center d-flex align-items-center mt-5 pt-5s">
         <form class="form col-12 col-md-4" ng-submit="vm.login(vm.credenciales)">
+            <h2>Inicio de Sesion</h2>
             <div class="form-group">
                 <input type="text" placeholder="Correo electrónico" class="form-control" ng-model="vm.credenciales.email">
             </div>
@@ -16,6 +15,4 @@
             </p>
     </div>
     </form>
-</div>
-
 </div>
